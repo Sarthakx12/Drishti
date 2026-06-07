@@ -1,0 +1,230 @@
+.hero {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-geist-sans), sans-serif;
+  background: #d6ead4;
+}
+
+/* ── SKY BACKGROUND (exact palette from reference) ───────── */
+.sky {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 65% 10%, #e8f4ff 0%, transparent 60%),
+    radial-gradient(ellipse 40% 40% at 85% 5%, #f0f8ff 0%, transparent 50%),
+    linear-gradient(
+      180deg,
+      #bfd8ec 0%,
+      #ceeaf0 18%,
+      #d9edd8 40%,
+      #c8dfc6 65%,
+      #9dc49a 80%,
+      #7aaf76 92%,
+      #5a9456 100%
+    );
+}
+
+.cloud {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.55);
+  border-radius: 100px;
+  filter: blur(18px);
+  pointer-events: none;
+}
+.c1 { width: 280px; height: 70px; top: 6%; left: 8%; opacity: 0.7; }
+.c2 { width: 200px; height: 50px; top: 10%; left: 28%; opacity: 0.5; }
+.c3 { width: 320px; height: 80px; top: 4%; right: 10%; opacity: 0.6; }
+.c4 { width: 160px; height: 40px; top: 16%; right: 28%; opacity: 0.4; }
+
+.sunRays {
+  position: absolute;
+  top: -60px;
+  right: 8%;
+  width: 300px;
+  height: 300px;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg, rgba(255, 230, 100, 0.12) 3deg, transparent 6deg,
+    transparent 12deg, rgba(255, 230, 100, 0.08) 15deg, transparent 18deg,
+    transparent 24deg, rgba(255, 230, 100, 0.10) 27deg, transparent 30deg,
+    transparent 36deg, rgba(255, 230, 100, 0.06) 39deg, transparent 42deg,
+    transparent 48deg, rgba(255, 230, 100, 0.12) 51deg, transparent 54deg,
+    transparent 60deg
+  );
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* ── GIANT BACKGROUND WORD ───────────────────────────────── */
+.bgWordWrap {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  text-align: center;
+  pointer-events: none;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  z-index: 1;
+}
+.bgWord {
+  font-family: var(--font-geist-sans), sans-serif;
+  font-size: clamp(80px, 17vw, 220px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.28);
+  text-shadow: 0 2px 0 rgba(255, 255, 255, 0.1);
+  white-space: nowrap;
+}
+
+/* ── PLANT / VISION ILLUSTRATION ──────────────────────────── */
+.plantWrap {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 520px;
+  max-width: 90vw;
+  height: 75vh;
+  z-index: 3;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+.plantSvg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 20px 40px rgba(0, 80, 0, 0.25));
+  animation: gentleSway 6s ease-in-out infinite;
+}
+@keyframes gentleSway {
+  0%, 100% { transform: rotate(0deg) translateY(0); }
+  25% { transform: rotate(0.5deg) translateY(-3px); }
+  75% { transform: rotate(-0.4deg) translateY(-2px); }
+}
+
+/* ── GRASS STRIP ──────────────────────────────────────────── */
+.grassStrip {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  z-index: 4;
+  overflow: hidden;
+}
+.grassSvg { width: 100%; height: 100%; display: block; }
+
+/* ── NAV ──────────────────────────────────────────────────── */
+.nav {
+  position: relative;
+  z-index: 20;
+  padding: 22px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+}
+.navLinks {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  list-style: none;
+}
+.navLinks a {
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(20, 50, 20, 0.65);
+  padding: 7px 16px;
+  border-radius: 100px;
+  text-decoration: none;
+  transition: all 0.25s;
+}
+.navLinks a:hover { color: #1a3a1a; }
+.navLinks a.active {
+  color: #1a3a1a;
+  font-weight: 600;
+  border-bottom: 2px solid #1a3a1a;
+  border-radius: 0;
+  padding-bottom: 5px;
+}
+.navContact {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  border: 1px solid rgba(26, 58, 26, 0.25);
+  border-radius: 100px;
+  padding: 9px 20px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #1a3a1a;
+  text-decoration: none;
+  transition: all 0.25s;
+}
+.navContact:hover { background: rgba(26, 58, 26, 0.06); }
+.navContact svg { width: 14px; height: 14px; opacity: 0.7; }
+
+/* ── CONTENT AREA ─────────────────────────────────────────── */
+.heroContent {
+  position: relative;
+  z-index: 10;
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+  padding: 0 48px 120px;
+}
+.heroLeft { max-width: 320px; }
+.heroEyebrow {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #1a3a1a;
+  margin-bottom: 14px;
+}
+.heroTitle {
+  font-size: clamp(26px, 3.6vw, 36px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.18;
+  color: #1a3a1a;
+  margin-bottom: 14px;
+}
+.heroTagline {
+  font-size: 13px;
+  color: rgba(20, 60, 20, 0.7);
+  line-height: 1.7;
+  font-weight: 400;
+  margin-bottom: 24px;
+}
+
+/* ── GLASS CARD (bottom right) ────────────────────────────── */
+/* fade in on load */
+.nav { animation: fadeDown 0.8s 0.1s both; }
+.heroLeft { animation: fadeUp 0.9s 0.4s both; }
+.bgWordWrap { animation: fadeIn 1.2s 0.2s both; }
+.plantWrap { animation: growUp 1.4s 0.3s cubic-bezier(0.16, 1, 0.3, 1) both; }
+
+@keyframes fadeDown { from { opacity: 0; transform: translateY(-16px); } to { opacity: 1; transform: none; } }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes growUp {
+  from { opacity: 0; transform: translateX(-50%) scaleY(0.7) translateY(40px); transform-origin: bottom center; }
+  to { opacity: 1; transform: translateX(-50%) scaleY(1) translateY(0); }
+}
+
+@media (max-width: 720px) {
+  .heroContent { padding: 0 24px 90px; }
+  .nav { padding: 18px 24px; }
+  .navLinks { display: none; }
+}
